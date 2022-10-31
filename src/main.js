@@ -5,20 +5,21 @@ import data from './data/ghibli/ghibli.js';
 
 const gFilms = data.films;
 
-/*
 
-window.addEventListener('load', init, false);
+const welcome =document.getElementById("welcomeSection");
+const directorsSection =document.getElementById("directorsSection");
+const producersSection =document.getElementById("producersSection");
+const moviesSection = document.getElementById("moviesSection");
+
+window.addEventListener('load', init, true);
 
 function init() {
-    const welcome = document.querySelector('.mainSection__welcome');
-    welcome.style.visibility = 'visible';
-    const directorsSection = document.querySelector('.mainSection__directors');
-    directorsSection.style.visibility = 'hidden';
-    const producersSection = document.querySelector('.mainSection__producers');
-    producersSection.style.visibility = 'hidden';
-    const moviesSection = document.querySelector('.mainSection__movies');
-    moviesSection.style.visibility = 'hidden';
-}*/
+   
+    welcome.style.display="block";
+    directorsSection.style.display="none";
+    producersSection.style.display="none";
+    moviesSection.style.display="none";
+}
 
 
 //console.log(data["films"][0]["producer"]);
@@ -62,51 +63,41 @@ document
     .getElementById("directorsMenu")
     .addEventListener("click", function (event) {
         event.preventDefault();
-
-        /*  let welcomeSection = document.querySelector('.mainSection__welcome');
-          welcomeSection.style.visibility = 'hidden';
-          let directorsSection = document.querySelector('.mainSection__directors');
-          directorsSection.style.visibility = 'visible';
-          directorsSection.section__ghibliInfo.style.visibility = 'visible';*/
-
-
+            
         const directorsList=filterDataByProperty(gFilms, 'director');
 
-        showProducers_Directors(directorsList);
-
+        showDirectors(directorsList);
+        
+        welcome.style.display="none";
+        producersSection.style.display="none"; 
+        moviesSection.style.display="none";      
+        directorsSection.style.display="block";
     })
-
-
+    
 
 document
     .getElementById("producersMenu")
     .addEventListener("click", function (event) {
         event.preventDefault();
 
-        /* let welcomeSection = document.querySelector('.mainSection__welcome');
-         welcomeSection.style.visibility = 'hidden';
-         let producersSection = document.querySelector('.mainSection__producers');
-         producersSection.style.visibility = 'visible';*/
-
         //showData(filterDataByProperty(gFilms, 'producer'), false);
 
         const producersList=filterDataByProperty(gFilms, 'producer');
 
-        showProducers_Directors(producersList);
+        showProducers(producersList);
+
+        welcome.style.display="none";
+        directorsSection.style.display="none";
+        moviesSection.style.display="none";        
+        producersSection.style.display="block"; 
 
     })
-
 
 
 document
     .getElementById("moviesMenu")
     .addEventListener("click", function (event) {
         event.preventDefault();
-
-        /*let welcomeSection = document.querySelector('.mainSection__welcome');
-        welcomeSection.style.visibility = 'hidden';
-        let moviesSection = document.querySelector('.mainSection__movies');
-        moviesSection.style.visibility = 'visible';*/
 
         const movies = filterDataByProperties(gFilms, ["title", "poster"]);
 
@@ -116,13 +107,16 @@ document
 
         obj2.forEach((obj2) => { console.log("orderAZ: " + ": " + obj2["title"]) });
 
+        welcome.style.display="none";
+        directorsSection.style.display="none";
+        moviesSection.style.display="block";        
+        producersSection.style.display="none"; 
 
 
     })
 
       
 const showMovies = (movies)=>{
-
 
     const moviesFragment = document.createDocumentFragment();
 
@@ -138,13 +132,31 @@ const showMovies = (movies)=>{
         movieCard.appendChild(title);
         moviesFragment.appendChild(movieCard);
     });
-    document.querySelector(".section__gContainer").appendChild(moviesFragment);
+    document.getElementById("section__movies").appendChild(moviesFragment);
 }
      
-const showProducers_Directors = (names)=>{
+const showDirectors = (names)=>{
+
+    const fragment =  createHtml(names);
+
+    document.getElementById("section__directors").appendChild(fragment);
 
 
-    const producersFragment = document.createDocumentFragment();
+}
+
+const showProducers = (names)=>{
+
+    const fragment =  createHtml(names);
+
+    document.getElementById("section__producers").appendChild(fragment);
+
+
+}
+
+
+const createHtml =(names)=>{
+    
+    const fragment = document.createDocumentFragment();
 
     names.forEach(name => {
         const nameP = document.createElement("p");
@@ -153,24 +165,12 @@ const showProducers_Directors = (names)=>{
         nameCard.className="gibliInfo";
         nameCard.id=name;
         nameCard.appendChild(nameP);
-        producersFragment.appendChild(nameCard);
+        fragment.appendChild(nameCard);
     });
 
-    document.querySelector(".section__gContainer").appendChild(producersFragment);
-
+    return fragment;
 
 }
 
 console.log(filterDataByProperties(gFilms, ["title", "poster"]));
-
-
-/*let d = document.getElementById("directorsMenu"); // Encuentra el elemento "p" en el sitio
-d.onclick = showDirectors; // Agrega función onclick al elemento
-
-function showDirectors(event) {
-    event.preventDefault();
-
-    showData(filterDataByProperty(gFilms, 'director'), false);
-}*/
-
 

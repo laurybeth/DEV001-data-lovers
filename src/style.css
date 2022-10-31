@@ -114,8 +114,7 @@ section h1 {
 }
 
 
-
-.section__gContainer {
+.section__gContainer, .section__gContainerWelcome {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
