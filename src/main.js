@@ -122,14 +122,14 @@ document
 
         const movies = filterDataByProperties(gFilms, ["title", "poster"]);
 
-        const sectionContainer = document.getElementById("section__movies");
+        //const sectionContainer = document.getElementById("section__movies");
 
         const selectedValue = document.getElementById("select__movies").value;
 
         console.log("valor seleccionado: " + document.getElementById("select__movies").value);
         if (selectedValue === "Ascending") {
             
-            ifContainsMovies(sectionContainer);
+            //ifContainsMovies(sectionContainer);
             const obj2 = sortDataAZ(movies, "title");
 
             showMovies(obj2);
@@ -138,7 +138,7 @@ document
 
         if (selectedValue === "Descending") {
             
-            ifContainsMovies(sectionContainer);
+            //ifContainsMovies(sectionContainer);
             const obj2 = sortDataZA(movies, "title");
 
             showMovies(obj2);
@@ -153,10 +153,9 @@ document
 
     });
 
-    function ifContainsMovies() {
-        const movies = document.getElementById("section__movies");
-        while (movies.hasChildNodes()) {
-          movies.removeChild(movies.firstChild);
+    function ifContainsChildren(parent) {
+           while (parent.hasChildNodes()) {
+          parent.removeChild(parent.firstChild);
         }
       }
 
@@ -165,6 +164,8 @@ const showMovies = (movies) => {
 
 
     const sectionContainer = document.getElementById("section__movies");
+
+    ifContainsChildren(sectionContainer);
     
     const moviesFragment = document.createDocumentFragment();
 
