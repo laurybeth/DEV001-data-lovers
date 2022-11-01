@@ -126,7 +126,7 @@ document
 
         const selectedValue = document.getElementById("select__movies").value;
 
-        console.log("valor seleccionado: " + document.getElementById("select__movies").value);
+        //console.log("valor seleccionado: " + document.getElementById("select__movies").value);
         if (selectedValue === "Ascending") {
             
             //ifContainsMovies(sectionContainer);
@@ -234,5 +234,5 @@ const createHtml = (names) => {
 
 }
 
-console.log(filterDataByProperties(gFilms, ["title", "poster"]));
+//console.log(filterDataByProperties(gFilms, ["title", "poster"]));
 
