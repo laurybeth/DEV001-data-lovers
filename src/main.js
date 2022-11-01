@@ -112,18 +112,43 @@ document
         moviesSection.style.display="block";        
         producersSection.style.display="none"; 
 
+        document
+    .getElementById("select__movies")
+    .addEventListener("click", function (event) {
+        event.preventDefault();
+        const movies = filterDataByProperties(gFilms, ["title", "poster"]);
+        const selectedValue = document.getElementById("select__movies").value;
+        console.log("valor seleccionado: " + document.getElementById("select__movies").value);
+        if (selectedValue === "Ascending"){
+            debugger;
+
+            const obj2 = sortDataAZ(movies, "title");
+
+            showMovies(obj2);
+
+            
+        }
+        
+        
+
+        welcome.style.display="none";
+        directorsSection.style.display="none";
+        moviesSection.style.display="block";        
+        producersSection.style.display="none"; 
+
+
+    })
+      
 
     })
 
-      
+
 const showMovies = (movies)=>{
 
 
     const sectionContainer = document.getElementById("section__movies");
     
-    if (sectionContainer.children.length) {
-        return;
-    }
+   
     
     const moviesFragment = document.createDocumentFragment();
 
