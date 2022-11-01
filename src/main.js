@@ -118,6 +118,13 @@ document
       
 const showMovies = (movies)=>{
 
+
+    const sectionContainer = document.getElementById("section__movies");
+    
+    if (sectionContainer.children.length) {
+        return;
+    }
+    
     const moviesFragment = document.createDocumentFragment();
 
     movies.forEach(movie => {
@@ -132,23 +139,34 @@ const showMovies = (movies)=>{
         movieCard.appendChild(title);
         moviesFragment.appendChild(movieCard);
     });
-    document.getElementById("section__movies").appendChild(moviesFragment);
+    sectionContainer.appendChild(moviesFragment);
 }
      
 const showDirectors = (names)=>{
 
+    const sectionContainer=  document.getElementById("section__directors");
+
+    if (sectionContainer.children.length) {
+        return;
+    }
+
     const fragment =  createHtml(names);
 
-    document.getElementById("section__directors").appendChild(fragment);
+    sectionContainer.appendChild(fragment);
 
 
 }
 
 const showProducers = (names)=>{
 
-    const fragment =  createHtml(names);
+    const sectionContainer=  document.getElementById("section__producers");
 
-    document.getElementById("section__producers").appendChild(fragment);
+    if (sectionContainer.children.length) {
+        return;
+    }
+    
+    const fragment =  createHtml(names);
+    sectionContainer.appendChild(fragment);
 
 
 }
