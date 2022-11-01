@@ -53,7 +53,7 @@ header h1 {
   color: #FFFFFF;
   text-shadow: none;
   font-size: 50px;
-  width: 280px;
+  width: 270px;
    transition: 1s;
 }
 
@@ -95,6 +95,16 @@ a img {
 .mainSection__welcome, .mainSection__directors, .mainSection__producers, .mainSection__movies {
 width: 98%;
 margin:auto;
+}
+
+.sort {
+  display: flex;
+  font-size: revert;
+}
+
+select {
+  font-size: xx-large;
+  border: 2px solid #D99982;
 }
 
 section h1 {
