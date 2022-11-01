@@ -1,4 +1,4 @@
-import { filterDataByProperty, filterDataByProperties, sortDataAZ } from './data.js';
+import { filterDataByProperty, filterDataByProperties, sortDataAZ, sortDataZA} from './data.js';
 
 
 import data from './data/ghibli/ghibli.js';
@@ -6,19 +6,19 @@ import data from './data/ghibli/ghibli.js';
 const gFilms = data.films;
 
 
-const welcome =document.getElementById("welcomeSection");
-const directorsSection =document.getElementById("directorsSection");
-const producersSection =document.getElementById("producersSection");
+const welcome = document.getElementById("welcomeSection");
+const directorsSection = document.getElementById("directorsSection");
+const producersSection = document.getElementById("producersSection");
 const moviesSection = document.getElementById("moviesSection");
 
 window.addEventListener('load', init, true);
 
 function init() {
-   
-    welcome.style.display="block";
-    directorsSection.style.display="none";
-    producersSection.style.display="none";
-    moviesSection.style.display="none";
+
+    welcome.style.display = "block";
+    directorsSection.style.display = "none";
+    producersSection.style.display = "none";
+    moviesSection.style.display = "none";
 }
 
 
@@ -63,17 +63,17 @@ document
     .getElementById("directorsMenu")
     .addEventListener("click", function (event) {
         event.preventDefault();
-            
-        const directorsList=filterDataByProperty(gFilms, 'director');
+
+        const directorsList = filterDataByProperty(gFilms, 'director');
 
         showDirectors(directorsList);
-        
-        welcome.style.display="none";
-        producersSection.style.display="none"; 
-        moviesSection.style.display="none";      
-        directorsSection.style.display="block";
+
+        welcome.style.display = "none";
+        producersSection.style.display = "none";
+        moviesSection.style.display = "none";
+        directorsSection.style.display = "block";
     })
-    
+
 
 document
     .getElementById("producersMenu")
@@ -82,14 +82,14 @@ document
 
         //showData(filterDataByProperty(gFilms, 'producer'), false);
 
-        const producersList=filterDataByProperty(gFilms, 'producer');
+        const producersList = filterDataByProperty(gFilms, 'producer');
 
         showProducers(producersList);
 
-        welcome.style.display="none";
-        directorsSection.style.display="none";
-        moviesSection.style.display="none";        
-        producersSection.style.display="block"; 
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "none";
+        producersSection.style.display = "block";
 
     })
 
@@ -103,52 +103,68 @@ document
 
         showMovies(movies);
 
-        const obj2 = sortDataAZ(movies, "title");
+       // obj2.forEach((obj2) => { console.log("orderAZ: " + ": " + obj2["title"]) });
 
-        obj2.forEach((obj2) => { console.log("orderAZ: " + ": " + obj2["title"]) });
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "block";
+        producersSection.style.display = "none";
 
-        welcome.style.display="none";
-        directorsSection.style.display="none";
-        moviesSection.style.display="block";        
-        producersSection.style.display="none"; 
 
-        document
+    })
+
+
+document
     .getElementById("select__movies")
     .addEventListener("click", function (event) {
-        event.preventDefault();
-        const movies = filterDataByProperties(gFilms, ["title", "poster"]);
-        const selectedValue = document.getElementById("select__movies").value;
-        console.log("valor seleccionado: " + document.getElementById("select__movies").value);
-        if (selectedValue === "Ascending"){
-            debugger;
 
+        event.preventDefault();
+
+        const movies = filterDataByProperties(gFilms, ["title", "poster"]);
+
+        const sectionContainer = document.getElementById("section__movies");
+
+        const selectedValue = document.getElementById("select__movies").value;
+
+        console.log("valor seleccionado: " + document.getElementById("select__movies").value);
+        if (selectedValue === "Ascending") {
+            
+            ifContainsMovies(sectionContainer);
             const obj2 = sortDataAZ(movies, "title");
 
             showMovies(obj2);
 
-            
         }
-        
-        
 
-        welcome.style.display="none";
-        directorsSection.style.display="none";
-        moviesSection.style.display="block";        
-        producersSection.style.display="none"; 
+        if (selectedValue === "Descending") {
+            
+            ifContainsMovies(sectionContainer);
+            const obj2 = sortDataZA(movies, "title");
+
+            showMovies(obj2);
+
+        }
+
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "block";
+        producersSection.style.display = "none";
 
 
-    })
-      
+    });
 
-    })
+    function ifContainsMovies() {
+        const movies = document.getElementById("section__movies");
+        while (movies.hasChildNodes()) {
+          movies.removeChild(movies.firstChild);
+        }
+      }
 
 
-const showMovies = (movies)=>{
+const showMovies = (movies) => {
 
 
     const sectionContainer = document.getElementById("section__movies");
-    
-   
     
     const moviesFragment = document.createDocumentFragment();
 
@@ -158,55 +174,57 @@ const showMovies = (movies)=>{
         const poster = document.createElement("img");
         poster.src = movie.poster;
         const movieCard = document.createElement("div");
-        movieCard.className="gibliInfo";
-        movieCard.id=movie.title;
+        movieCard.className = "gibliInfo";
+        movieCard.id = movie.title;
         movieCard.appendChild(poster);
         movieCard.appendChild(title);
         moviesFragment.appendChild(movieCard);
     });
     sectionContainer.appendChild(moviesFragment);
+    
 }
-     
-const showDirectors = (names)=>{
 
-    const sectionContainer=  document.getElementById("section__directors");
+
+const showDirectors = (names) => {
+
+    const sectionContainer = document.getElementById("section__directors");
 
     if (sectionContainer.children.length) {
         return;
     }
 
-    const fragment =  createHtml(names);
+    const fragment = createHtml(names);
 
     sectionContainer.appendChild(fragment);
 
 
 }
 
-const showProducers = (names)=>{
+const showProducers = (names) => {
 
-    const sectionContainer=  document.getElementById("section__producers");
+    const sectionContainer = document.getElementById("section__producers");
 
     if (sectionContainer.children.length) {
         return;
     }
-    
-    const fragment =  createHtml(names);
+
+    const fragment = createHtml(names);
     sectionContainer.appendChild(fragment);
 
 
 }
 
 
-const createHtml =(names)=>{
-    
+const createHtml = (names) => {
+
     const fragment = document.createDocumentFragment();
 
     names.forEach(name => {
         const nameP = document.createElement("p");
         nameP.innerText = name;
         const nameCard = document.createElement("div");
-        nameCard.className="gibliInfo";
-        nameCard.id=name;
+        nameCard.className = "gibliInfo";
+        nameCard.id = name;
         nameCard.appendChild(nameP);
         fragment.appendChild(nameCard);
     });
