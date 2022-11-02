@@ -242,13 +242,13 @@ section h1 {
       margin-bottom: 40px;
       margin-left: 10px;
       font-size: 25px;
-      
-    }
+     }
 
     .gibliInfo:hover {
       font-size: 30px;
       width: 200px;
     } 
+
   }
 
   @media screen and (max-width: 600px) {

@@ -80,8 +80,6 @@ document
     .addEventListener("click", function (event) {
         event.preventDefault();
 
-        //showData(filterDataByProperty(gFilms, 'producer'), false);
-
         const producersList = filterDataByProperty(gFilms, 'producer');
 
         showProducers(producersList);
@@ -190,9 +188,7 @@ const showDirectors = (names) => {
 
     const sectionContainer = document.getElementById("section__directors");
 
-    if (sectionContainer.children.length) {
-        return;
-    }
+    ifContainsChildren(sectionContainer);
 
     const fragment = createHtml(names);
 
@@ -205,13 +201,17 @@ const showProducers = (names) => {
 
     const sectionContainer = document.getElementById("section__producers");
 
-    if (sectionContainer.children.length) {
-        return;
-    }
+    ifContainsChildren(sectionContainer);
 
     const fragment = createHtml(names);
     sectionContainer.appendChild(fragment);
 
+
+    document.querySelector(".gibliInfo__rankingButton").addEventListener("click", function (event) {
+        console.log("El evento es: ", event);
+        //alert("ID: "+button.id);
+    }
+    )
 
 }
 
@@ -221,18 +221,24 @@ const createHtml = (names) => {
     const fragment = document.createDocumentFragment();
 
     names.forEach(name => {
+        const rankingButton=document.createElement("button");
+        rankingButton.className="gibliInfo__rankingButton";
+        rankingButton.id=name;
+        rankingButton.innerHTML="Ver ranking";
         const nameP = document.createElement("p");
         nameP.innerText = name;
         const nameCard = document.createElement("div");
         nameCard.className = "gibliInfo";
         nameCard.id = name;
         nameCard.appendChild(nameP);
+        nameCard.appendChild(rankingButton);
         fragment.appendChild(nameCard);
     });
 
     return fragment;
 
 }
+
 
 //console.log(filterDataByProperties(gFilms, ["title", "poster"]));
 
