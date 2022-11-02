@@ -59,6 +59,6 @@ describe('sortDatZA', () => {
         { director: "Hayao Miyazaki", title: "My Neighbor Totoro" },
         { director: "Hayao Miyazaki", title: "Kiki's Delivery Service" },  
         { director: "Isao Takahata", title: "Grave of the Fireflies" }
-      ],"Hayao Miyazaki" === "Hayao Miyazaki")).toEqual([{"title": "Castle in the Sky"},{"title": "My Neighbor Totoro"},{"title": "Kiki's Delivery Service"}]);
+      ],"director","Hayao Miyazaki")).toEqual([{"director": "Hayao Miyazaki","title": "Castle in the Sky"},{"director": "Hayao Miyazaki","title": "My Neighbor Totoro"},{"director": "Hayao Miyazaki","title": "Kiki's Delivery Service"}]);
     });
     });
