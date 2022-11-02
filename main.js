@@ -207,6 +207,12 @@ const showProducers = (names) => {
     sectionContainer.appendChild(fragment);
 
 
+    document.querySelector(".gibliInfo__rankingButton").addEventListener("click", function (event) {
+        console.log("El evento es: ", event);
+        //alert("ID: "+button.id);
+    }
+    )
+
 }
 
 
@@ -233,11 +239,6 @@ const createHtml = (names) => {
 
 }
 
-document.querySelector(".gibliInfo__rankingButton")
-    .addEventListener("click", function (event) {
-        console.log("El evento es: ", event);
-        alert("holaaa");
-    }
-    )
+
 //console.log(filterDataByProperties(gFilms, ["title", "poster"]));
 
