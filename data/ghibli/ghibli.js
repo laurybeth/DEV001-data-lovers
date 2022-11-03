@@ -1865,7 +1865,7 @@ export default {
       "description": "14-year-old Arrietty and the rest of the Clock family live in peaceful anonymity as they make their own home from items 'borrowed' from the house's human inhabitants. However, life changes for the Clocks when a human boy discovers Arrietty.",
       "director": "Hiromasa Yonebayashi",
       "producer": "Toshio Suzuki",
-      "poster": "https://dyn.media.forbiddenplanet.com/E9b25NLGgrg3pP7uEftlePPZyhg=/trim/fit-in/712x1024/filters:format(webp)/https://media.forbiddenplanet.com/products/diamond/STL071/STL071071.jpg",
+      "poster": "https://i.postimg.cc/kGZZ60gb/poster.jpg",
       "release_date": "2010",
       "rt_score": "95",
       "people": [
