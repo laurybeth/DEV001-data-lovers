@@ -1,4 +1,4 @@
-import { filterDataByProperty, filterDataByProperties, sortDataAZ, sortDataZA, filterDataByValue} from '../src/data.js';
+import { filterDataByProperty, filterDataByProperties, sortDataAZ, sortDataZA, filterDataByValue, averageFunction} from '../src/data.js';
 
 describe('filterDataByProperty', () => {
 
@@ -60,5 +60,18 @@ describe('sortDatZA', () => {
         { director: "Hayao Miyazaki", title: "Kiki's Delivery Service" },  
         { director: "Isao Takahata", title: "Grave of the Fireflies" }
       ],"director","Hayao Miyazaki")).toEqual([{"director": "Hayao Miyazaki","title": "Castle in the Sky"},{"director": "Hayao Miyazaki","title": "My Neighbor Totoro"},{"director": "Hayao Miyazaki","title": "Kiki's Delivery Service"}]);
+    });
+    });
+
+    
+  describe('averageFunction', () => {
+
+    it('Debe retornar el promedio de los valores de la propiedad indicada', () => {
+      expect(averageFunction([
+        { director: "Hayao Miyazaki", rt_score: "91" },
+        { director: "Hayao Miyazaki", rt_score: "89" },
+        { director: "Hayao Miyazaki", rt_score: "92" },  
+        { director: "Isao Takahata", rt_score: "99" }
+      ],"rt_score")).toEqual("92.75");
     });
     });
