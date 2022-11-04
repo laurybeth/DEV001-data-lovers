@@ -1,24 +1,25 @@
-import { filterDataByProperty, filterDataByProperties, sortDataAZ } from './data.js';
+import { filterDataByProperty, filterDataByProperties, filterDataByValue, sortDataAZ, sortDataZA } from './data.js';
 
 
 import data from './data/ghibli/ghibli.js';
 
 const gFilms = data.films;
 
-/*
 
-window.addEventListener('load', init, false);
+const welcome = document.getElementById("welcomeSection");
+const directorsSection = document.getElementById("directorsSection");
+const producersSection = document.getElementById("producersSection");
+const moviesSection = document.getElementById("moviesSection");
+
+window.addEventListener('load', init, true);
 
 function init() {
-    const welcome = document.querySelector('.mainSection__welcome');
-    welcome.style.visibility = 'visible';
-    const directorsSection = document.querySelector('.mainSection__directors');
-    directorsSection.style.visibility = 'hidden';
-    const producersSection = document.querySelector('.mainSection__producers');
-    producersSection.style.visibility = 'hidden';
-    const moviesSection = document.querySelector('.mainSection__movies');
-    moviesSection.style.visibility = 'hidden';
-}*/
+
+    welcome.style.display = "block";
+    directorsSection.style.display = "none";
+    producersSection.style.display = "none";
+    moviesSection.style.display = "none";
+}
 
 
 //console.log(data["films"][0]["producer"]);
@@ -52,30 +53,29 @@ filterDataByProperty(gFilms,"producer").forEach(function (value) {
 producer.appendChild(showProducer); //y aquí se muestra
 */
 
-//console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
-//console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
+console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
 
-//console.log("P: " + filterDataByProperty(gFilms, 'producer'));
-//console.log("D: " + filterDataByProperty(gFilms, 'director'));
+const showInModalCard = () => {
+
+}
+
+console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
+
 
 document
     .getElementById("directorsMenu")
     .addEventListener("click", function (event) {
         event.preventDefault();
 
-        /*  let welcomeSection = document.querySelector('.mainSection__welcome');
-          welcomeSection.style.visibility = 'hidden';
-          let directorsSection = document.querySelector('.mainSection__directors');
-          directorsSection.style.visibility = 'visible';
-          directorsSection.section__ghibliInfo.style.visibility = 'visible';*/
+        const directorsList = filterDataByProperty(gFilms, 'director');
 
+        showDirectors(directorsList);
 
-        const directorsList=filterDataByProperty(gFilms, 'director');
-
-        showProducers_Directors(directorsList);
-
+        welcome.style.display = "none";
+        producersSection.style.display = "none";
+        moviesSection.style.display = "none";
+        directorsSection.style.display = "block";
     })
-
 
 
 document
@@ -83,19 +83,16 @@ document
     .addEventListener("click", function (event) {
         event.preventDefault();
 
-        /* let welcomeSection = document.querySelector('.mainSection__welcome');
-         welcomeSection.style.visibility = 'hidden';
-         let producersSection = document.querySelector('.mainSection__producers');
-         producersSection.style.visibility = 'visible';*/
+        const producersList = filterDataByProperty(gFilms, 'producer');
 
-        //showData(filterDataByProperty(gFilms, 'producer'), false);
+        showProducers(producersList);
 
-        const producersList=filterDataByProperty(gFilms, 'producer');
-
-        showProducers_Directors(producersList);
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "none";
+        producersSection.style.display = "block";
 
     })
-
 
 
 document
@@ -103,26 +100,69 @@ document
     .addEventListener("click", function (event) {
         event.preventDefault();
 
-        /*let welcomeSection = document.querySelector('.mainSection__welcome');
-        welcomeSection.style.visibility = 'hidden';
-        let moviesSection = document.querySelector('.mainSection__movies');
-        moviesSection.style.visibility = 'visible';*/
-
         const movies = filterDataByProperties(gFilms, ["title", "poster"]);
 
         showMovies(movies);
 
-        const obj2 = sortDataAZ(movies, "title");
+        // obj2.forEach((obj2) => { console.log("orderAZ: " + ": " + obj2["title"]) });
 
-        obj2.forEach((obj2) => { console.log("orderAZ: " + ": " + obj2["title"]) });
-
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "block";
+        producersSection.style.display = "none";
 
 
     })
 
-      
-const showMovies = (movies)=>{
 
+document
+    .getElementById("select__movies")
+    .addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const movies = filterDataByProperties(gFilms, ["title", "poster"]);
+
+
+        const selectedValue = document.getElementById("select__movies").value;
+
+        if (selectedValue === "Ascending") {
+
+            const obj2 = sortDataAZ(movies, "title");
+
+            showMovies(obj2);
+
+        }
+
+        if (selectedValue === "Descending") {
+
+            const obj2 = sortDataZA(movies, "title");
+
+            showMovies(obj2);
+
+        }
+
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "block";
+        producersSection.style.display = "none";
+
+
+    });
+
+function ifContainsChildren(parent) {
+    while (parent.hasChildNodes()) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+
+const showMovies = (movies) => {
+
+
+    const sectionContainer = document.getElementById("section__movies");
+
+    ifContainsChildren(sectionContainer);
 
     const moviesFragment = document.createDocumentFragment();
 
@@ -132,45 +172,92 @@ const showMovies = (movies)=>{
         const poster = document.createElement("img");
         poster.src = movie.poster;
         const movieCard = document.createElement("div");
-        movieCard.className="gibliInfo";
-        movieCard.id=movie.title;
+        movieCard.className = "movieInfo";
+        movieCard.id = movie.title;
         movieCard.appendChild(poster);
         movieCard.appendChild(title);
         moviesFragment.appendChild(movieCard);
     });
-    document.querySelector(".section__gContainer").appendChild(moviesFragment);
+    sectionContainer.appendChild(moviesFragment);
+
 }
-     
-const showProducers_Directors = (names)=>{
 
 
-    const producersFragment = document.createDocumentFragment();
+const showDirectors = (names) => {
+
+    const sectionContainer = document.getElementById("section__directors");
+
+    ifContainsChildren(sectionContainer);
+
+    const fragment = createHtml(names);
+
+
+    sectionContainer.appendChild(fragment);
+
+    rankingButtonFunction(sectionContainer.id.slice(9, -1));
+
+
+}
+
+const showProducers = (names) => {
+
+    const sectionContainer = document.getElementById("section__producers");
+
+    ifContainsChildren(sectionContainer);
+
+    const fragment = createHtml(names);
+    sectionContainer.appendChild(fragment);
+
+    rankingButtonFunction(sectionContainer.id.slice(9, -1));
+
+
+}
+
+
+const createHtml = (names) => {
+
+    const fragment = document.createDocumentFragment();
 
     names.forEach(name => {
+        const rankingButton = document.createElement("button");
+        rankingButton.className = "gibliInfo__rankingButton";
+        rankingButton.id = name;
+        rankingButton.innerHTML = "Ver ranking";
         const nameP = document.createElement("p");
         nameP.innerText = name;
         const nameCard = document.createElement("div");
-        nameCard.className="gibliInfo";
-        nameCard.id=name;
+        const buttonCard = document.createElement("div");
+        nameCard.className = "gibliInfo";
+        nameCard.id = name;
+        buttonCard.className = "section__gContainer__buttonDiv";
         nameCard.appendChild(nameP);
-        producersFragment.appendChild(nameCard);
+        buttonCard.appendChild(nameCard)
+        buttonCard.appendChild(rankingButton);
+        fragment.appendChild(buttonCard);
     });
 
-    document.querySelector(".section__gContainer").appendChild(producersFragment);
-
+    return fragment;
 
 }
 
-console.log(filterDataByProperties(gFilms, ["title", "poster"]));
+const rankingButtonFunction = (section) => {
 
+    const rankingButtonArray = document.querySelectorAll('.gibliInfo__rankingButton');
 
-/*let d = document.getElementById("directorsMenu"); // Encuentra el elemento "p" en el sitio
-d.onclick = showDirectors; // Agrega función onclick al elemento
+    rankingButtonArray.forEach(el => el.addEventListener('click', event => {
 
-function showDirectors(event) {
-    event.preventDefault();
+        const name = event.target.getAttribute("id");
 
-    showData(filterDataByProperty(gFilms, 'director'), false);
-}*/
+        console.log("nombre del " + section + ": " + name);
 
+        const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", "director", "producer"]);
+
+        rankingData.forEach((rankingData) => { console.log("rankingData: " + rankingData["title"]) });
+
+        const directorFilms = filterDataByValue(rankingData, "director", name);
+        directorFilms.forEach((directorFilms) => { console.log("directorFilms: " + directorFilms["title"] + ": " + directorFilms["rt_score"]) });
+
+    }));
+
+}
 

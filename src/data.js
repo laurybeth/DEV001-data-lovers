@@ -52,3 +52,20 @@ export const sortDataAZ= (data,sortBy) => {
 
 };
 
+export const sortDataZA= (data,sortBy) => {
+  return [...data].sort((itemLeft, itemRight) => {
+      // el titulo de la izquierda va primero
+      if (itemLeft[sortBy] < itemRight[sortBy]) {
+        return 1;
+      }
+      // el titulo de la derecha va primero
+      if (itemLeft[sortBy] > itemRight[sortBy]) {
+
+        return -1;
+      }
+      // los titulos son iguales
+      return 0;
+  });
+
+};
+
