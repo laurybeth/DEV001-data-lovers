@@ -2,7 +2,7 @@ import { filterDataByProperty, filterDataByProperties, sortDataAZ, sortDataZA, f
 
 describe('filterDataByProperty', () => {
 
-  it('returns `filterData`', () => {
+  it('Debe retornar un array con los valores que cumplan con la condición de la propiedad indicada', () => {
     expect(filterDataByProperty([
       { age: 10, name: "hola", gender: "male" },
       { age: 10, name: "hola", gender: "female" },
@@ -15,7 +15,7 @@ describe('filterDataByProperty', () => {
 
 describe('filterDataByProperties', () => {
 
-it('returns `filterDataByProperties`', () => {
+it('Debe retornar un array de objetos que cumplan con la condición de las propiedades indicadas', () => {
   expect(filterDataByProperties([
     { age: 10, name: "hola", gender: "male" },
     { age: 10, name: "hola", gender: "female" },
@@ -27,7 +27,7 @@ it('returns `filterDataByProperties`', () => {
 
 describe('sortDataAZ', () => {
 
-it('returns `sortDataAZ`', () => {
+it('Debe retornar un array de objetos ordenados de la A a la Z por la propiedad indicada', () => {
   expect(sortDataAZ([
     { title: "Castle in the Sky"},
     { title:  "Kiki's Delivery Service"},
@@ -40,7 +40,7 @@ it('returns `sortDataAZ`', () => {
 
 describe('sortDatZA', () => {
 
-  it('returns `sortDataZA`', () => {
+  it('Debe retornar un array ordenado de la Z a la A por la propiedad indicada', () => {
     expect(sortDataZA([
       { title: "Castle in the Sky"},
       { title: "Kiki's Delivery Service" }, 
@@ -53,7 +53,7 @@ describe('sortDatZA', () => {
 
   describe('filterDataByValue', () => {
 
-    it('returns `filterDataByValue`', () => {
+    it('Debe retornar un array de objetos que coincidan con el valor de la propiedad indicada', () => {
       expect(filterDataByValue([
         { director: "Hayao Miyazaki", title: "Castle in the Sky" },
         { director: "Hayao Miyazaki", title: "My Neighbor Totoro" },

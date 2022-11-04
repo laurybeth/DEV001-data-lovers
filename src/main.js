@@ -56,13 +56,11 @@ producer.appendChild(showProducer); //y aquí se muestra
 console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
 
 const showInModalCard = () => {
-    
+
 }
 
 console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
 
-//console.log("P: " + filterDataByProperty(gFilms, 'producer'));
-//console.log("D: " + filterDataByProperty(gFilms, 'director'));
 
 document
     .getElementById("directorsMenu")
@@ -196,7 +194,7 @@ const showDirectors = (names) => {
 
     sectionContainer.appendChild(fragment);
 
-    rankingButton();
+    rankingButtonFunction(sectionContainer.id.slice(9, -1));
 
 
 }
@@ -210,7 +208,7 @@ const showProducers = (names) => {
     const fragment = createHtml(names);
     sectionContainer.appendChild(fragment);
 
-    rankingButton();
+    rankingButtonFunction(sectionContainer.id.slice(9, -1));
 
 
 }
@@ -242,17 +240,24 @@ const createHtml = (names) => {
 
 }
 
-const rankingButton = () => {
+const rankingButtonFunction = (section) => {
 
     const rankingButtonArray = document.querySelectorAll('.gibliInfo__rankingButton');
 
     rankingButtonArray.forEach(el => el.addEventListener('click', event => {
 
         const name = event.target.getAttribute("id");
-        console.log(name);
+
+        console.log("nombre del " + section + ": " + name);
+
+        const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", "director", "producer"]);
+
+        rankingData.forEach((rankingData) => { console.log("rankingData: " + rankingData["title"]) });
+
+        const directorFilms = filterDataByValue(rankingData, "director", name);
+        directorFilms.forEach((directorFilms) => { console.log("directorFilms: " + directorFilms["title"] + ": " + directorFilms["rt_score"]) });
 
     }));
 
 }
-//console.log(filterDataByProperties(gFilms, ["title", "poster"]));
 
