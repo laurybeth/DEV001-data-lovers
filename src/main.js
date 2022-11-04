@@ -194,7 +194,7 @@ const showDirectors = (names) => {
 
     sectionContainer.appendChild(fragment);
 
-    rankingButton(sectionContainer.id.slice(9, -1));
+    rankingButtonFunction(sectionContainer.id.slice(9, -1));
 
 
 }
@@ -208,7 +208,7 @@ const showProducers = (names) => {
     const fragment = createHtml(names);
     sectionContainer.appendChild(fragment);
 
-    rankingButton(sectionContainer.id.slice(9, -1));
+    rankingButtonFunction(sectionContainer.id.slice(9, -1));
 
 
 }
@@ -240,7 +240,7 @@ const createHtml = (names) => {
 
 }
 
-const rankingButton = (section) => {
+const rankingButtonFunction = (section) => {
 
     const rankingButtonArray = document.querySelectorAll('.gibliInfo__rankingButton');
 
