@@ -69,3 +69,19 @@ export const sortDataZA= (data,sortBy) => {
 
 };
 
+
+export const scoreAverage = (scoreArray) => {
+  let sum = 0;
+  scoreArray.forEach(score => {
+    sum += parseInt(score, 10);
+  });
+  return sum/scoreArray.length;
+};
+
+export const scoreAverage2 = (scoreObject,condition) => {
+  let sum = 0;
+  scoreObject.forEach(scoreObject => {
+    sum += parseInt(scoreObject[condition], 10);
+  });
+  return sum;
+};

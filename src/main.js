@@ -1,4 +1,4 @@
-import { filterDataByProperty, filterDataByProperties, filterDataByValue, sortDataAZ, sortDataZA } from './data.js';
+import { filterDataByProperty, filterDataByProperties, filterDataByValue, sortDataAZ, sortDataZA,scoreAverage, scoreAverage2 } from './data.js';
 
 
 import data from './data/ghibli/ghibli.js';
@@ -240,7 +240,8 @@ const createHtml = (names) => {
 
 }
 
-const rankingButtonFunction = (section) => {
+
+const rankingButtonFunction = (role) => {
 
     const rankingButtonArray = document.querySelectorAll('.gibliInfo__rankingButton');
 
@@ -248,16 +249,45 @@ const rankingButtonFunction = (section) => {
 
         const name = event.target.getAttribute("id");
 
-        console.log("nombre del " + section + ": " + name);
+        console.log("nombre del " + role + ": " + name);
 
-        const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", "director", "producer"]);
+        const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", role]);
 
         rankingData.forEach((rankingData) => { console.log("rankingData: " + rankingData["title"]) });
 
-        const directorFilms = filterDataByValue(rankingData, "director", name);
-        directorFilms.forEach((directorFilms) => { console.log("directorFilms: " + directorFilms["title"] + ": " + directorFilms["rt_score"]) });
+        const roleFilms = filterDataByValue(rankingData, role, name);
+        roleFilms.forEach((roleFilms) => { console.log("roleFilms: " + roleFilms["title"] + ": " + roleFilms["rt_score"]) });
 
+        const dataSortByScore = sortDataZA(roleFilms,"rt_score");
+        dataSortByScore.forEach(dataSortByScore=>{console.log("sortDataAZ: " +dataSortByScore.rt_score)});
+
+        debugger;
+
+        const scoreObject = filterDataByProperties(roleFilms, ["rt_score"]);
+
+        console.log("values:"+Object.values(scoreObject));
+
+        const arrayScore = scoreAverage2(filterDataByProperties(roleFilms, ["rt_score"]));
+
+        //arrayScore.forEach(arrayScore=>{console.log("sortDataAZ: " +arrayScore.rt_score)});
+
+        console.log ("arrayScore objeto: "+filterDataByProperties(roleFilms, ["rt_score"]));
+
+
+        //console.log ("SUMA: "+arrayScore/roleFilms.length);
+
+
+        
+        //console.log(dataSortByScore[0]["rt_score"]);
+
+        //console.log("Suma score: "+scoreAverage(Array.from(dataSortByScore.rt_score)));
+        
+        
     }));
 
+    let a =['1','2','3','4'];
+
+    console.log("Suma: "+scoreAverage(a));
+    //console.log(Array.from(dataSortByScore.rt_score));
 }
 
