@@ -55,9 +55,9 @@ producer.appendChild(showProducer); //y aquí se muestra
 
 console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
 
-const showInModalCard = () => {
+/*const showInModalCard = () => {
     
-}
+}*/
 
 console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
 
