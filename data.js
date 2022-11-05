@@ -69,3 +69,11 @@ export const sortDataZA= (data,sortBy) => {
 
 };
 
+
+export const averageFunction = (data,condition) => {
+  let sum = 0;
+  data.forEach(data => {
+    sum += parseInt(data[condition], 10);
+  });
+  return (sum/data.length).toFixed(2);
+};
