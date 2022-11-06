@@ -1,4 +1,4 @@
-import { filterDataByProperty, filterDataByProperties, filterDataByValue, sortDataAZ, sortDataZA,scoreAverage, scoreAverage2 } from './data.js';
+import { filterDataByProperty, filterDataByProperties, filterDataByValue, sortDataAZ, sortDataZA, averageFunction } from './data.js';
 
 
 import data from './data/ghibli/ghibli.js';
@@ -20,6 +20,33 @@ function init() {
     producersSection.style.display = "none";
     moviesSection.style.display = "none";
 }
+
+// Get the modal
+//const modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+//const btn = document.getElementByClassName("section__gContainer__buttonDiv");
+
+// Get the <span> element that closes the modal
+//const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+//document.addEventListener("click", btn); 
+
+
+
+
+// When the user clicks on <span> (x), close the modal
+//span.onclick = function() {
+// modal.style.display = "none";
+//}
+
+// When the user clicks anywhere outside of the modal, close it
+//window.onclick = function(event) {
+// if (event.target == modal) {
+// modal.style.display = "none";
+// }
+//}
 
 
 //console.log(data["films"][0]["producer"]);
@@ -53,13 +80,10 @@ filterDataByProperty(gFilms,"producer").forEach(function (value) {
 producer.appendChild(showProducer); //y aquí se muestra
 */
 
-console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
+//console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
 
-const showInModalCard = () => {
 
-}
-
-console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
+//console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
 
 
 document
@@ -103,8 +127,6 @@ document
         const movies = filterDataByProperties(gFilms, ["title", "poster"]);
 
         showMovies(movies);
-
-        // obj2.forEach((obj2) => { console.log("orderAZ: " + ": " + obj2["title"]) });
 
         welcome.style.display = "none";
         directorsSection.style.display = "none";
@@ -251,43 +273,70 @@ const rankingButtonFunction = (role) => {
 
         console.log("nombre del " + role + ": " + name);
 
-        const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", role]);
-
-        rankingData.forEach((rankingData) => { console.log("rankingData: " + rankingData["title"]) });
+        const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", "poster", role]);
 
         const roleFilms = filterDataByValue(rankingData, role, name);
-        roleFilms.forEach((roleFilms) => { console.log("roleFilms: " + roleFilms["title"] + ": " + roleFilms["rt_score"]) });
-
-        const dataSortByScore = sortDataZA(roleFilms,"rt_score");
-        dataSortByScore.forEach(dataSortByScore=>{console.log("sortDataAZ: " +dataSortByScore.rt_score)});
-
-        debugger;
-
-        const scoreObject = filterDataByProperties(roleFilms, ["rt_score"]);
-
-        console.log("values:"+Object.values(scoreObject));
-
-        const arrayScore = scoreAverage2(filterDataByProperties(roleFilms, ["rt_score"]));
-
-        //arrayScore.forEach(arrayScore=>{console.log("sortDataAZ: " +arrayScore.rt_score)});
-
-        console.log ("arrayScore objeto: "+filterDataByProperties(roleFilms, ["rt_score"]));
+      
+        const roleFilmsSortByScore = sortDataZA(roleFilms, "rt_score");
+           
+        const scoreAverage = averageFunction(roleFilmsSortByScore, "rt_score");
+       
+        showInModalCard(roleFilmsSortByScore, scoreAverage, role);
 
 
-        //console.log ("SUMA: "+arrayScore/roleFilms.length);
-
-
-        
-        //console.log(dataSortByScore[0]["rt_score"]);
-
-        //console.log("Suma score: "+scoreAverage(Array.from(dataSortByScore.rt_score)));
-        
-        
     }));
+}
 
-    let a =['1','2','3','4'];
+const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
 
-    console.log("Suma: "+scoreAverage(a));
-    //console.log(Array.from(dataSortByScore.rt_score));
+  
+    roleFilmsSortByScore.forEach((roleFilmsSortByScore) => { console.log("roleFilmsSortByScore: " + roleFilmsSortByScore["title"] + ": " + roleFilmsSortByScore["rt_score"]) });
+    console.log("Promedio: " + scoreAverage);
+    console.log("Número de películas: " + roleFilmsSortByScore.length);
+
+    const content = document.querySelector(".modal__content-"+role) 
+    ifContainsChildren(content); 
+    const fragment = document.createDocumentFragment();
+    const modal = document.querySelector(".modal-"+role);
+
+        modal.style.display = "block";
+        const average = document.createElement("h1");
+        average.innerText = scoreAverage;
+        const modalCardAverage = document.createElement("div");
+        modalCardAverage.className = "averageModalCard";
+        modalCardAverage.appendChild(average);
+        fragment.appendChild(modalCardAverage);
+        
+    roleFilmsSortByScore.forEach((film)=>{
+
+        const title = document.createElement("p");
+        title.innerText = film.title;
+        const poster = document.createElement("img");
+        poster.src = film.poster;
+        const modalCard = document.createElement("div");
+        modalCard.className = "infoModal";
+   
+        modalCard.appendChild(title);    
+        modalCard.appendChild(poster);
+        fragment.appendChild(modalCard);
+        
+    });
+
+    
+   
+
+    content.appendChild(fragment);
+
+document
+    .querySelector(".modal__close-"+role)
+    .addEventListener("click", function() {
+        modal.style.display = "none";
+    }); 
+
+            
+
+
+
+
 }
 

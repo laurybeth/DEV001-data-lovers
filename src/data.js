@@ -70,18 +70,10 @@ export const sortDataZA= (data,sortBy) => {
 };
 
 
-export const scoreAverage = (scoreArray) => {
+export const averageFunction = (data,condition) => {
   let sum = 0;
-  scoreArray.forEach(score => {
-    sum += parseInt(score, 10);
+  data.forEach(data => {
+    sum += parseInt(data[condition], 10);
   });
-  return sum/scoreArray.length;
-};
-
-export const scoreAverage2 = (scoreObject,condition) => {
-  let sum = 0;
-  scoreObject.forEach(scoreObject => {
-    sum += parseInt(scoreObject[condition], 10);
-  });
-  return sum;
+  return (sum/data.length).toFixed(2);
 };

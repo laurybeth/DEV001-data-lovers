@@ -48,7 +48,7 @@ header h1 {
   display: none;
 }
 
-.gibliInfo:hover {
+.gibliInfo:hover, .movieInfo:hover {
   background-color: #515a6c;
   color: #FFFFFF;
   text-shadow: none;
@@ -56,6 +56,11 @@ header h1 {
   width: 270px;
    transition: 1s;
 }
+
+.movieInfo:hover {
+  font-size: 40px;
+}
+
 
 nav{
 
@@ -210,6 +215,47 @@ section h1 {
   color: #FFEAE2;
 }
 
+
+.modal-director, .modal-producer {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal__content-director, .modal__content-producer {
+  background-color: #A68F97;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.modal__close-producer, .modal__close-director  {
+  color: #aaaaaa;
+  font-size: 70px;
+  position: absolute;
+  right: 13%;
+  top: 110px;
+  font-weight: bold;
+}
+
+.modal__closeProducers:hover, .modal__closeDirectors:hover,
+.modal__closeProducers:focus, .modal__closeDirectors:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
   @media screen and (max-width: 930px) {
     .menuLeft a:not(:first-child) {
       display: none;
@@ -263,7 +309,7 @@ section h1 {
      }
 
     .gibliInfo:hover, .movieInfo:hover {
-      font-size: 30px;
+      font-size: 40px;
       width: 200px;
     } 
 
@@ -275,6 +321,10 @@ section h1 {
       width: 100%;
       margin:auto;
    
+    }
+
+    .movieInfo:hover {
+      font-size: 20px;
     }
 
 

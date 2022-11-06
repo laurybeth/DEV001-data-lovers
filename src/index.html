@@ -8,9 +8,10 @@
   <link rel="icon" href="./img/totoro.png">
   <link rel="icon" href="totoro.ico">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>Estudio Ghibli</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -22,47 +23,60 @@
       <h1>Estudio Ghibli</h1>
       <nav>
         <div class="menuLeft" id="menuLeft">
-            <a href="index.html"><img src="./img/home.png" alt="Home"> Home </a>         
-            <a id= "directorsMenu" href="#"><img src="./img/producers.png" alt="Directors"> Directors</a>
-            <a id="producersMenu" href="#"><img src="./img/producers.png" alt="Producers"> Producers</a>
-            <a id="moviesMenu" href="#"><img src="./img/movie.png" alt="Movies"> Movies</a>
+          <a href="index.html"><img src="./img/home.png" alt="Home"> Home </a>
+          <a id="directorsMenu" href="#"><img src="./img/producers.png" alt="Directors"> Directors</a>
+          <a id="producersMenu" href="#"><img src="./img/producers.png" alt="Producers"> Producers</a>
+          <a id="moviesMenu" href="#"><img src="./img/movie.png" alt="Movies"> Movies</a>
 
-            <a href="#"><img src="./img/aboutUs.png" alt="About Us"> About Us</a>
-            <a  class="menuLeft__Hamburger" id = "hamburgerIcon"><img src="./img/hamburger.png" alt="hamburgerIcon"></a>
+          <a href="#"><img src="./img/aboutUs.png" alt="About Us"> About Us</a>
+          <a class="menuLeft__Hamburger" id="hamburgerIcon"><img src="./img/hamburger.png" alt="hamburgerIcon"></a>
         </div>
       </nav>
     </header>
-  <div class="mainSection" >
-    <section class="mainSection__welcome" id="welcomeSection">
-      <h1 class="section__title">Bienvenidos a Estudio Ghibli</h1>
-      <div class="section__gContainer" >  
-      <div class="section__description">Estudio Ghibli es un estudio japonés de animación, considerado por la crítica especializada como uno de los mejores estudios de animación del mundo en la actualidad.</div>
-      <div class="section__description">Aquí encontrarás información sobre: quienes y cuántos productores/directores hay involucrados, cuántos y cuáles ánimes se han realizado, qué ánimes son mejores según la audiencia; y mucho más.</div>
-    </div>
-    </section>
-    <section class="mainSection__directors" id="directorsSection" >
-      <h1 class="section__title">Directors</h1>
-      <div class="section__gContainer" id="section__directors" >
-      </div>
-    </section>
-    <section class="mainSection__producers" id="producersSection">
-      <h1 class="section__title">Producers</h1>
-      <div class="section__gContainer" id="section__producers">
-      </div>
-  </section>
-  <section class="mainSection__movies" id="moviesSection">
-    <div class="sort">
-      <label for="sortOrder">Order: </label>
-      <select name="sortButton" id="select__movies">
-        <option value="Select Value" default>Select</option>
-        <option value="Ascending" id="order__ascending">Ascending</option>
-        <option value="Descending" id="order__descending">Descending</option>
-      </select>
-    </div>
-    <h1 class="section__title">Movies</h1>
-    <div class="section__gContainer" id="section__movies">
-    </div>
-  </section>
+    <div class="mainSection">
+      <section class="mainSection__welcome" id="welcomeSection">
+        <h1 class="section__title">Bienvenidos a Estudio Ghibli</h1>
+        <div class="section__gContainer">
+          <div class="section__description">Estudio Ghibli es un estudio japonés de animación, considerado por la
+            crítica especializada como uno de los mejores estudios de animación del mundo en la actualidad.</div>
+          <div class="section__description">Aquí encontrarás información sobre: quienes y cuántos productores/directores
+            hay involucrados, cuántos y cuáles ánimes se han realizado, qué ánimes son mejores según la audiencia; y
+            mucho más.</div>
+        </div>
+      </section>
+      <section class="mainSection__directors" id="directorsSection">
+        <h1 class="section__title">Directors</h1>
+        <div class="section__gContainer" id="section__directors">
+        </div>
+        <div class="modal-director" >
+          <span  class="modal__close-director">&times;</span>
+          <div class="modal__content-director">
+          </div>
+        </div>
+      </section>
+      <section class="mainSection__producers" id="producersSection">
+        <h1 class="section__title">Producers</h1>
+        <div class="section__gContainer" id="section__producers">
+        </div>
+        <div class="modal-producer" >
+          <span  class="modal__close-producer">&times;</span>
+          <div class="modal__content-producer">
+          </div>
+        </div>
+      </section>
+      <section class="mainSection__movies" id="moviesSection">
+        <div class="sort">
+          <label for="sortOrder">Order: </label>
+          <select name="sortButton" id="select__movies">
+            <option value="Select Value" default>Select</option>
+            <option value="Ascending" id="order__ascending">Ascending</option>
+            <option value="Descending" id="order__descending">Descending</option>
+          </select>
+        </div>
+        <h1 class="section__title">Movies</h1>
+        <div class="section__gContainer" id="section__movies">
+        </div>
+      </section>
     </div>
     <footer class="footer">
       <p>Copyright © 2022</p>
