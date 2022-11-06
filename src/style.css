@@ -232,11 +232,33 @@ section h1 {
 
 /* Modal Content */
 .modal__content-director, .modal__content-producer {
-  background-color: #A68F97;
+  background-color: #F2F2F2;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+
+
+.modal__content-director p, .modal__content-producer p {
+
+  color:#A99B95;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.infoModal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.averageModalCard {
+  margin: 40px 0;
 }
 
 /* The Close Button */
@@ -247,6 +269,7 @@ section h1 {
   right: 13%;
   top: 110px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .modal__closeProducers:hover, .modal__closeDirectors:hover,

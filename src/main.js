@@ -276,11 +276,11 @@ const rankingButtonFunction = (role) => {
         const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", "poster", role]);
 
         const roleFilms = filterDataByValue(rankingData, role, name);
-      
+
         const roleFilmsSortByScore = sortDataZA(roleFilms, "rt_score");
-           
+
         const scoreAverage = averageFunction(roleFilmsSortByScore, "rt_score");
-       
+
         showInModalCard(roleFilmsSortByScore, scoreAverage, role);
 
 
@@ -289,25 +289,25 @@ const rankingButtonFunction = (role) => {
 
 const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
 
-  
+
     roleFilmsSortByScore.forEach((roleFilmsSortByScore) => { console.log("roleFilmsSortByScore: " + roleFilmsSortByScore["title"] + ": " + roleFilmsSortByScore["rt_score"]) });
     console.log("Promedio: " + scoreAverage);
     console.log("Número de películas: " + roleFilmsSortByScore.length);
 
-    const content = document.querySelector(".modal__content-"+role) 
-    ifContainsChildren(content); 
+    const content = document.querySelector(".modal__content-" + role)
+    ifContainsChildren(content);
     const fragment = document.createDocumentFragment();
-    const modal = document.querySelector(".modal-"+role);
+    const modal = document.querySelector(".modal-" + role);
 
-        modal.style.display = "block";
-        const average = document.createElement("h1");
-        average.innerText = scoreAverage;
-        const modalCardAverage = document.createElement("div");
-        modalCardAverage.className = "averageModalCard";
-        modalCardAverage.appendChild(average);
-        fragment.appendChild(modalCardAverage);
-        
-    roleFilmsSortByScore.forEach((film)=>{
+    modal.style.display = "block";
+    const average = document.createElement("h1");
+    average.innerText = scoreAverage;
+    const modalCardAverage = document.createElement("div");
+    modalCardAverage.className = "averageModalCard";
+    modalCardAverage.appendChild(average);
+    fragment.appendChild(modalCardAverage);
+
+    roleFilmsSortByScore.forEach((film) => {
 
         const title = document.createElement("p");
         title.innerText = film.title;
@@ -315,25 +315,31 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
         poster.src = film.poster;
         const modalCard = document.createElement("div");
         modalCard.className = "infoModal";
-   
-        modalCard.appendChild(title);    
+
+        modalCard.appendChild(title);
         modalCard.appendChild(poster);
         fragment.appendChild(modalCard);
-        
+
     });
 
-    
-   
 
     content.appendChild(fragment);
 
-document
-    .querySelector(".modal__close-"+role)
-    .addEventListener("click", function() {
-        modal.style.display = "none";
-    }); 
+    document
+        .querySelector(".modal__close-" + role)
+        .addEventListener("click", function () {
+            modal.style.display = "none";
+        });
 
-            
+
+    window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+
+
 
 
 
