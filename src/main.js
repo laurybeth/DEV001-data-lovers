@@ -302,12 +302,15 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
     modal.style.display = "block";
     const average = document.createElement("h1");
     average.innerText = scoreAverage;
+    const averageDescription = document.createElement("h6");
+    averageDescription.innerText = "Average Ranking of films reviews"
     const modalCardAverage = document.createElement("div");
     modalCardAverage.className = "averageModalCard";
     modalCardAverage.appendChild(average);
+    modalCardAverage.appendChild(averageDescription);
     fragment.appendChild(modalCardAverage);
 
-    roleFilmsSortByScore.forEach((film) => {
+    roleFilmsSortByScore.forEach((film,index) => {
 
         const title = document.createElement("p");
         title.innerText = film.title;
@@ -315,7 +318,10 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
         poster.src = film.poster;
         const modalCard = document.createElement("div");
         modalCard.className = "infoModal";
-
+        const rating = document.createElement("div");
+        rating.className = "rating";
+        rating.innerText = index+1;
+        modalCard.appendChild(rating);
         modalCard.appendChild(title);
         modalCard.appendChild(poster);
         fragment.appendChild(modalCard);

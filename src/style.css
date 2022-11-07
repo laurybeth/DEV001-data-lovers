@@ -23,10 +23,10 @@ header {
 }
 
 header h1 {
-  font-size: 80px;
-  padding-top: 135px;
-  padding-left: 40px;
-  padding-bottom: 30px;
+  font-size: 7vw;
+  padding-top: 7vw;
+  padding-left: 2vw;
+  padding-bottom: 1vw;
   background-color: #D99982;
 }
 
@@ -34,7 +34,7 @@ header h1 {
   text-decoration: none;
   color: #A68F97;
   background-color: #F2F2F2;
-  font-size: 50px;
+  font-size: 3vw;
   font-weight: 900;
   padding: 17px;
 }
@@ -83,7 +83,7 @@ nav{
 }
 
 a img {
-  height: 50px;
+  height: 3vw;
   background-color:transparent;
   vertical-align: middle;
 }
@@ -98,8 +98,15 @@ a img {
 }
 
 .mainSection__welcome, .mainSection__directors, .mainSection__producers, .mainSection__movies {
-width: 98%;
-margin:auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 98%;
+  margin:auto;
+}
+
+.section__title {
+  font-size: 6vw;
 }
 
 .sort {
@@ -113,8 +120,7 @@ select {
 }
 
 section h1 {
-  padding-bottom: 60px;
-  font-weight: 1200;
+  padding-bottom: 20px;
   font-size: 80px;
 }
 
@@ -165,7 +171,6 @@ section h1 {
   text-shadow: 0 0 5px #A99AAD;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   border: 1px solid #FFFFFF;
-  word-wrap: break-word;
   margin-left: 35px;
   margin-right: 35px;
 }
@@ -245,6 +250,7 @@ section h1 {
   color:#A99B95;
   font-size: 30px;
   font-weight: bold;
+  margin: 0% 5%;
 }
 
 .infoModal {
@@ -252,13 +258,27 @@ section h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 0 8vw 8vw 8vw;
+}
+
+.infoModal img {
+  width: 15vw;
+}
+
+.infoModal p {
+font-size: 3vw;
 }
 
 .averageModalCard {
-  margin: 40px 0;
+  margin: 8vw 0;
+}
+
+.averageModalCard h1 {
+  font-size: 8vw;
+}
+
+.averageModalCard h6 {
+  font-size: 3vw;
 }
 
 /* The Close Button */
@@ -279,15 +299,17 @@ section h1 {
   cursor: pointer;
 }
 
+.rating {
+  font-size: 9vw;
+  background-color: #D99982;
+  color: #F2F2F2;
+  padding: 10% 2%;
+  width: 8vw;
+}
+
   @media screen and (max-width: 930px) {
     .menuLeft a:not(:first-child) {
       display: none;
-    }
-
-    .section__title {
-      font-size: 55px;
-      text-align: center;
-      margin: auto;
     }
 
     .section__description {
@@ -340,21 +362,8 @@ section h1 {
 
   @media screen and (max-width: 600px) {
 
-    .mainSection__welcome, .mainSection__directors, .mainSection__producers, .mainSection__movies {
-      width: 100%;
-      margin:auto;
-   
-    }
-
     .movieInfo:hover {
       font-size: 20px;
-    }
-
-
-    .section__title {
-      font-size: 35px;
-      text-align: center;
-      max-width: 100%;
     }
 
     .section__description {
