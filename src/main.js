@@ -10,6 +10,7 @@ const welcome = document.getElementById("welcomeSection");
 const directorsSection = document.getElementById("directorsSection");
 const producersSection = document.getElementById("producersSection");
 const moviesSection = document.getElementById("moviesSection");
+const aboutUsSection = document.getElementById("aboutUsSection");
 
 window.addEventListener('load', init, true);
 
@@ -19,6 +20,7 @@ function init() {
     directorsSection.style.display = "none";
     producersSection.style.display = "none";
     moviesSection.style.display = "none";
+    aboutUsSection.style.display = "none";
 }
 
 // Get the modal
@@ -99,6 +101,7 @@ document
         producersSection.style.display = "none";
         moviesSection.style.display = "none";
         directorsSection.style.display = "block";
+        aboutUsSection.style.display = "none";
     })
 
 
@@ -115,6 +118,7 @@ document
         directorsSection.style.display = "none";
         moviesSection.style.display = "none";
         producersSection.style.display = "block";
+        aboutUsSection.style.display = "none";
 
     })
 
@@ -132,7 +136,7 @@ document
         directorsSection.style.display = "none";
         moviesSection.style.display = "block";
         producersSection.style.display = "none";
-
+        aboutUsSection.style.display = "none";
 
     })
 
@@ -167,7 +171,6 @@ document
      
     });
     
-
 function ifContainsChildren(parent) {
     while (parent.hasChildNodes()) {
         parent.removeChild(parent.firstChild);
@@ -340,11 +343,17 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
         }
     });
 
-
-
-
-
-
-
 }
+document
+    .getElementById("aboutUsMenu")
+    .addEventListener("click", function() {
 
+
+    aboutUsSection.style.display = "flex";
+    welcome.style.display = "none";
+    directorsSection.style.display = "none";
+    moviesSection.style.display = "none";
+    producersSection.style.display = "none";
+    
+    
+});
