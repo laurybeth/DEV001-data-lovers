@@ -139,7 +139,7 @@ document
 
 document
     .getElementById("select__movies")
-    .addEventListener("click", function (event) {
+    .addEventListener("change", function (event) {
 
         event.preventDefault();
 
@@ -148,29 +148,25 @@ document
 
         const selectedValue = document.getElementById("select__movies").value;
 
-        if (selectedValue === "Ascending") {
-
-            const obj2 = sortDataAZ(movies, "title");
-
-            showMovies(obj2);
-
-        }
-
-        if (selectedValue === "Descending") {
-
-            const obj2 = sortDataZA(movies, "title");
-
-            showMovies(obj2);
-
-        }
+              switch (selectedValue) {
+                case "Ascending":
+                       
+                    showMovies(sortDataAZ(movies, "title"));
+                  break;  // then take break
+                case "Descending":
+                     
+                    showMovies(sortDataZA(movies, "title"));
+                  break; // then take break
+            }
 
         welcome.style.display = "none";
         directorsSection.style.display = "none";
         moviesSection.style.display = "block";
         producersSection.style.display = "none";
-
-
+           
+     
     });
+    
 
 function ifContainsChildren(parent) {
     while (parent.hasChildNodes()) {
