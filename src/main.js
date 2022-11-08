@@ -15,7 +15,7 @@ window.addEventListener('load', init, true);
 
 function init() {
 
-    welcome.style.display = "block";
+    welcome.style.display = "flex";
     directorsSection.style.display = "none";
     producersSection.style.display = "none";
     moviesSection.style.display = "none";

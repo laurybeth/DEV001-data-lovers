@@ -48,19 +48,6 @@ header h1 {
   display: none;
 }
 
-.gibliInfo:hover, .movieInfo:hover {
-  background-color: #515a6c;
-  color: #FFFFFF;
-  text-shadow: none;
-  font-size: 50px;
-  width: 270px;
-   transition: 1s;
-}
-
-.movieInfo:hover {
-  font-size: 40px;
-}
-
 
 nav{
 
@@ -128,15 +115,6 @@ section h1 {
   margin-bottom: 30px;
 }
 
-
-.totoro {
-  position: fixed;
-  width: 13%;
-  bottom: 0;
-  right: 0;
-}
-
-
 .section__gContainer {
   display: flex;
   flex-flow: row wrap;
@@ -145,24 +123,10 @@ section h1 {
   padding: 50px;
   }
 
-  
-.gibliInfo p {
-  font-size: 30px;
-  margin: auto;
-  padding:5px;
-  max-width: 100%
-}
-
-.gibliInfo img {
-  padding:5px;
-  max-width: 100%;
-  margin: auto;
-}
-
 .gibliInfo, .movieInfo {
   font-family: 'Mingzat', sans-serif;
-  width: 256px;
-  height: 124px;
+  width: 14vw;
+  height: 7vw;
   color: #FFFFFF;
   background-color: #DDD3E0;
   text-align: center;
@@ -175,10 +139,41 @@ section h1 {
   margin-right: 35px;
 }
 
+.gibliInfo p {
+  font-size: 1.6vw;
+  margin: auto;
+  padding:5px;
+  max-width: 100%;
+  -webkit-text-stroke: 0.1px #A68F97;
+}
+
+.gibliInfo img {
+  padding:5px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.gibliInfo:hover, .movieInfo:hover {
+  background-color: #515a6c;
+  color: #FFFFFF;
+  text-shadow: none;
+  font-size: 50px;
+  width: 270px;
+   transition: 1s;
+}
+
 .movieInfo {
   height: auto;
   margin-bottom: 80px;
   display: block;
+}
+
+.movieInfo img {
+  width: 10vw;
+ }
+ 
+ .movieInfo:hover {
+  font-size: 40px;
 }
 
 .section__ghibliInfo img {
@@ -197,8 +192,6 @@ section h1 {
   border: 1px solid #FFFFFF;
 }
 
-
-
 .section__gContainer__buttonDiv {
   margin-bottom: 70px;
   margin-left: 30px;
@@ -207,19 +200,19 @@ section h1 {
 
 }
 
-.footer {
-  padding: 20px;
-  width: 100%;
+.gibliInfo__rankingButton {
+  background-color: #D99982;
+  border: 1px solid #f2f2f2;
+  color: #f2f2f2;
+  padding: 0.5vw 1.2vw;
+  font-weight: 900;
+  font-size: 0.9vw;
+}
+
+.gibliInfo__rankingButton:hover {
   background-color: #A68F97;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: center;
+  transition: 1s;
 }
-
-.footer p {
-  color: #FFEAE2;
-}
-
 
 .modal-director, .modal-producer {
   display: none; /* Hidden by default */
@@ -243,7 +236,6 @@ section h1 {
   border: 1px solid #888;
   width: 80%;
 }
-
 
 .modal__content-director p, .modal__content-producer p {
 
@@ -307,6 +299,26 @@ font-size: 3vw;
   width: 8vw;
 }
 
+.footer {
+  padding: 20px;
+  width: 100%;
+  background-color: #A68F97;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.footer p {
+  color: #FFEAE2;
+}
+
+.totoro {
+  position: fixed;
+  width: 13%;
+  bottom: 0;
+  right: 0;
+}
+
   @media screen and (max-width: 930px) {
     .menuLeft a:not(:first-child) {
       display: none;
@@ -320,6 +332,10 @@ font-size: 3vw;
     .menuLeft a.menuLeft__Hamburger {
       float: right;
       display: block;
+    }
+
+    header h1 {
+      font-size: 10vw;
     }
 
     nav div  {
@@ -337,20 +353,56 @@ font-size: 3vw;
       top: 0;
     }
 
+    .menuLeft a {
+      font-size: 7vw;
+    }
+
     .menuLeft.responsive a {
       float: none;
       display: block;
       text-align: left;
     }
 
-    .gibliInfo, .movieInfo {
-      width: 170px;
-      margin-bottom: 40px;
-      font-size: 25px;
+    a img {
+      height: 6vw;
+    }
+
+    .mainSection {
+      padding: 12vw;
+    }
+
+    label {
+      font-size: 6vw;
+    }
+
+    select {
+      font-size: 5vw;
+    }
+    
+    .gibliInfo {
+      width: 41vw;
+      height: 22.5vw;
+     }
+
+     .gibliInfo__rankingButton {
+      font-size: 3.5vw;
+     }
+
+     .movieInfo {
+     width: 49vw
+     }
+
+     .gibliInfo p {
+      font-size: 5vw;
+      padding: 0;
+     }
+
+     .movieInfo p {
+      font-size: 6vw
      }
 
      .movieInfo img {
-      width: 100%;
+      width: 38vw;
      }
 
     .gibliInfo:hover, .movieInfo:hover {
@@ -358,6 +410,9 @@ font-size: 3vw;
       width: 200px;
     } 
 
+    .section__title {
+      font-size: 10vw;
+    }
   }
 
   @media screen and (max-width: 600px) {
