@@ -84,7 +84,7 @@ a img {
   color: #D99982;
 }
 
-.mainSection__welcome, .mainSection__directors, .mainSection__producers, .mainSection__movies {
+.mainSection__welcome, .mainSection__directors, .mainSection__producers, .mainSection__movies, .mainSection__aboutUs {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +123,8 @@ section h1 {
   padding: 50px;
   }
 
-.gibliInfo, .movieInfo {
+
+.gibliInfo, .movieInfo, .aboutUs__xochitl, .aboutUs__laly {
   font-family: 'Inter', sans-serif;
   width: 14vw;
   height: 7vw;
@@ -166,10 +167,15 @@ section h1 {
 .movieInfo {
   height: auto;
   margin-bottom: 80px;
-  display: block;
+  
 }
 
-.movieInfo img {
+.aboutUs__xochitl, .aboutUs__laly {
+  height: auto;
+font-size: 1.5vw;
+}
+
+.movieInfo img , .aboutUs__xochitl img, .aboutUs__laly img{
   width: 10vw;
  }
  
@@ -300,6 +306,11 @@ font-size: 3vw;
   width: 8vw;
 }
 
+.mainSection__aboutUs {
+  flex-direction: row;
+  justify-content: center;
+}
+
 .footer {
   padding: 20px;
   width: 100%;
@@ -389,7 +400,7 @@ font-size: 3vw;
       font-size: 3.5vw;
      }
 
-     .movieInfo {
+     .movieInfo, .aboutUs__laly, .aboutUs__xochitl{
      width: 49vw
      }
 
@@ -398,11 +409,11 @@ font-size: 3vw;
       padding: 0;
      }
 
-     .movieInfo p {
+     .movieInfo p, .aboutUs__laly, .aboutUs__xochitl {
       font-size: 6vw
      }
 
-     .movieInfo img {
+     .movieInfo img, .aboutUs__laly img, .aboutUs__xochitl img {
       width: 38vw;
      }
 
