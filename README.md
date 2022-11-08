@@ -15,11 +15,16 @@ Fans de estudio Ghibli
 
 ## 2. Objetivos de los usuarios
 
-
+* Conocer más acerca de Estudio Ghibli a través de la página de bienvenida
+* Conocer los nombres de los productores, directores que participaron en Estudio ghibli.
+* Conocer las películas que ha realizado Estudio Ghibli y poder ordenarlas de forma ascendente o descendente.
+* Conocer el ranking promedio de valoración de cada película por director y productor, así como la películas de mejor ranking de cada uno.
+* Conocer a las desarrolladoras que han realizado la página.
 
 ## 3. Historias de Usuario
 
 ### Prototipos de baja y alta fidelidad
+
 
 #### HU1: Yo como "visitante del sitio" Quiero "VER una descripción del contenido de la página" para "familiarizarme"
 
