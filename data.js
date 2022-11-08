@@ -3,7 +3,7 @@
 export const filterDataByProperty = (data, condition) => {
   const result = [];
 
-  data.filter((data) => {
+  data.forEach((data) => {
 
     if (!result.includes(data[condition])) { result.push(data[condition]); }
 
@@ -70,10 +70,21 @@ export const sortDataZA= (data,sortBy) => {
 };
 
 
-export const averageFunction = (data,condition) => {
-  let sum = 0;
+export const averageFunction = (data, condition) => {
+/*  
+ //parseInt[data[condition], 10].reduce (function (accumulator, currentValue) =>  ((accumulator + currentValue)));
+ 
+ let sum = 0;
+ data.reduce(function(data, condition){
+  sum+=parseInt(data[condition],10);
+  return sum;
+});*/
+
+let sum = 0;
   data.forEach(data => {
     sum += parseInt(data[condition], 10);
   });
-  return (sum/data.length).toFixed(2);
+     
+return (sum/data.length).toFixed(2);
+
 };

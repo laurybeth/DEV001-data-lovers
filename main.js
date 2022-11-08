@@ -10,15 +10,17 @@ const welcome = document.getElementById("welcomeSection");
 const directorsSection = document.getElementById("directorsSection");
 const producersSection = document.getElementById("producersSection");
 const moviesSection = document.getElementById("moviesSection");
+const aboutUsSection = document.getElementById("aboutUsSection");
 
 window.addEventListener('load', init, true);
 
 function init() {
 
-    welcome.style.display = "block";
+    welcome.style.display = "flex";
     directorsSection.style.display = "none";
     producersSection.style.display = "none";
     moviesSection.style.display = "none";
+    aboutUsSection.style.display = "none";
 }
 
 // Get the modal
@@ -99,6 +101,7 @@ document
         producersSection.style.display = "none";
         moviesSection.style.display = "none";
         directorsSection.style.display = "block";
+        aboutUsSection.style.display = "none";
     })
 
 
@@ -115,6 +118,7 @@ document
         directorsSection.style.display = "none";
         moviesSection.style.display = "none";
         producersSection.style.display = "block";
+        aboutUsSection.style.display = "none";
 
     })
 
@@ -132,14 +136,14 @@ document
         directorsSection.style.display = "none";
         moviesSection.style.display = "block";
         producersSection.style.display = "none";
-
+        aboutUsSection.style.display = "none";
 
     })
 
 
 document
     .getElementById("select__movies")
-    .addEventListener("click", function (event) {
+    .addEventListener("change", function (event) {
 
         event.preventDefault();
 
@@ -148,30 +152,25 @@ document
 
         const selectedValue = document.getElementById("select__movies").value;
 
-        if (selectedValue === "Ascending") {
-
-            const obj2 = sortDataAZ(movies, "title");
-
-            showMovies(obj2);
-
-        }
-
-        if (selectedValue === "Descending") {
-
-            const obj2 = sortDataZA(movies, "title");
-
-            showMovies(obj2);
-
-        }
+              switch (selectedValue) {
+                case "Ascending":
+                       
+                    showMovies(sortDataAZ(movies, "title"));
+                  break;  // then take break
+                case "Descending":
+                     
+                    showMovies(sortDataZA(movies, "title"));
+                  break; // then take break
+            }
 
         welcome.style.display = "none";
         directorsSection.style.display = "none";
         moviesSection.style.display = "block";
         producersSection.style.display = "none";
-
-
+           
+     
     });
-
+    
 function ifContainsChildren(parent) {
     while (parent.hasChildNodes()) {
         parent.removeChild(parent.firstChild);
@@ -276,11 +275,11 @@ const rankingButtonFunction = (role) => {
         const rankingData = filterDataByProperties(gFilms, ["title", "rt_score", "poster", role]);
 
         const roleFilms = filterDataByValue(rankingData, role, name);
-      
+
         const roleFilmsSortByScore = sortDataZA(roleFilms, "rt_score");
-           
+
         const scoreAverage = averageFunction(roleFilmsSortByScore, "rt_score");
-       
+
         showInModalCard(roleFilmsSortByScore, scoreAverage, role);
 
 
@@ -289,25 +288,28 @@ const rankingButtonFunction = (role) => {
 
 const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
 
-  
+
     roleFilmsSortByScore.forEach((roleFilmsSortByScore) => { console.log("roleFilmsSortByScore: " + roleFilmsSortByScore["title"] + ": " + roleFilmsSortByScore["rt_score"]) });
     console.log("Promedio: " + scoreAverage);
     console.log("Número de películas: " + roleFilmsSortByScore.length);
 
-    const content = document.querySelector(".modal__content-"+role) 
-    ifContainsChildren(content); 
+    const content = document.querySelector(".modal__content-" + role)
+    ifContainsChildren(content);
     const fragment = document.createDocumentFragment();
-    const modal = document.querySelector(".modal-"+role);
+    const modal = document.querySelector(".modal-" + role);
 
-        modal.style.display = "block";
-        const average = document.createElement("h1");
-        average.innerText = scoreAverage;
-        const modalCardAverage = document.createElement("div");
-        modalCardAverage.className = "averageModalCard";
-        modalCardAverage.appendChild(average);
-        fragment.appendChild(modalCardAverage);
-        
-    roleFilmsSortByScore.forEach((film)=>{
+    modal.style.display = "block";
+    const average = document.createElement("h1");
+    average.innerText = scoreAverage;
+    const averageDescription = document.createElement("h6");
+    averageDescription.innerText = "Average Ranking of films reviews"
+    const modalCardAverage = document.createElement("div");
+    modalCardAverage.className = "averageModalCard";
+    modalCardAverage.appendChild(average);
+    modalCardAverage.appendChild(averageDescription);
+    fragment.appendChild(modalCardAverage);
+
+    roleFilmsSortByScore.forEach((film,index) => {
 
         const title = document.createElement("p");
         title.innerText = film.title;
@@ -315,28 +317,43 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
         poster.src = film.poster;
         const modalCard = document.createElement("div");
         modalCard.className = "infoModal";
-   
-        modalCard.appendChild(title);    
+        const rating = document.createElement("div");
+        rating.className = "rating";
+        rating.innerText = index+1;
+        modalCard.appendChild(rating);
+        modalCard.appendChild(title);
         modalCard.appendChild(poster);
         fragment.appendChild(modalCard);
-        
+
     });
 
-    
-   
 
     content.appendChild(fragment);
 
-document
-    .querySelector(".modal__close-"+role)
-    .addEventListener("click", function() {
-        modal.style.display = "none";
-    }); 
-
-            
+    document
+        .querySelector(".modal__close-" + role)
+        .addEventListener("click", function () {
+            modal.style.display = "none";
+        });
 
 
-
+    window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
 
 }
+document
+    .getElementById("aboutUsMenu")
+    .addEventListener("click", function() {
 
+
+    aboutUsSection.style.display = "flex";
+    welcome.style.display = "none";
+    directorsSection.style.display = "none";
+    moviesSection.style.display = "none";
+    producersSection.style.display = "none";
+    
+    
+});
