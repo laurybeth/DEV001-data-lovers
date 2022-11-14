@@ -23,34 +23,6 @@ function init() {
     aboutUsSection.style.display = "none";
 }
 
-// Get the modal
-//const modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-//const btn = document.getElementByClassName("section__gContainer__buttonDiv");
-
-// Get the <span> element that closes the modal
-//const span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-//document.addEventListener("click", btn); 
-
-
-
-
-// When the user clicks on <span> (x), close the modal
-//span.onclick = function() {
-// modal.style.display = "none";
-//}
-
-// When the user clicks anywhere outside of the modal, close it
-//window.onclick = function(event) {
-// if (event.target == modal) {
-// modal.style.display = "none";
-// }
-//}
-
-
 //console.log(data["films"][0]["producer"]);
 
 const iconHamburger = document.getElementById("hamburgerIcon");
@@ -153,11 +125,11 @@ document
         const selectedValue = document.getElementById("select__movies").value;
 
               switch (selectedValue) {
-                case "Ascending":
+                case "A to Z":
                        
                     showMovies(sortDataAZ(movies, "title"));
                   break;  // then take break
-                case "Descending":
+                case "Z to A":
                      
                     showMovies(sortDataZA(movies, "title"));
                   break; // then take break
