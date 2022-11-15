@@ -35,56 +35,62 @@ export const filterDataByProperties = (data, properties) => {
 
 };
 
-export const sortDataAZ= (data,sortBy) => {
+export const sortDataAZ = (data, sortBy) => {
   return [...data].sort((itemLeft, itemRight) => {
-      // el titulo de la izquierda va primero
-      if (itemLeft[sortBy] < itemRight[sortBy]) {
-        return -1;
-      }
-      // el titulo de la derecha va primero
-      if (itemLeft[sortBy] > itemRight[sortBy]) {
+    // el titulo de la izquierda va primero
+    if (itemLeft[sortBy] < itemRight[sortBy]) {
+      return -1;
+    }
+    // el titulo de la derecha va primero
+    if (itemLeft[sortBy] > itemRight[sortBy]) {
 
-        return 1;
-      }
-      // los titulos son iguales
-      return 0;
+      return 1;
+    }
+    // los titulos son iguales
+    return 0;
   });
 
 };
 
-export const sortDataZA= (data,sortBy) => {
+export const sortDataZA = (data, sortBy) => {
   return [...data].sort((itemLeft, itemRight) => {
-      // el titulo de la izquierda va primero
-      if (itemLeft[sortBy] < itemRight[sortBy]) {
-        return 1;
-      }
-      // el titulo de la derecha va primero
-      if (itemLeft[sortBy] > itemRight[sortBy]) {
+    // el titulo de la izquierda va primero
+    if (itemLeft[sortBy] < itemRight[sortBy]) {
+      return 1;
+    }
+    // el titulo de la derecha va primero
+    if (itemLeft[sortBy] > itemRight[sortBy]) {
 
-        return -1;
-      }
-      // los titulos son iguales
-      return 0;
+      return -1;
+    }
+    // los titulos son iguales
+    return 0;
   });
 
 };
 
 
 export const averageFunction = (data, condition) => {
-/*  
- //parseInt[data[condition], 10].reduce (function (accumulator, currentValue) =>  ((accumulator + currentValue)));
- 
- let sum = 0;
- data.reduce(function(data, condition){
-  sum+=parseInt(data[condition],10);
-  return sum;
-});*/
 
-let sum = 0;
-  data.forEach(data => {
-    sum += parseInt(data[condition], 10);
-  });
-     
-return (sum/data.length).toFixed(2);
+  //data.reduce (function (accumulator, currentValue) =>  ((accumulator + currentValue)));
 
+  const sum = data.reduce(function (accumulator, currentValue) {
+
+    const result = parseInt(currentValue[condition], 10);
+
+    accumulator += result;
+
+    return accumulator;
+  }, 0);
+
+  return (sum / data.length).toFixed(2);
+
+
+  /*
+   let sum = 0;
+     data.forEach(data => {
+       sum += parseInt(data[condition], 10);
+     });
+        
+   return (sum/data.length).toFixed(2); */
 };

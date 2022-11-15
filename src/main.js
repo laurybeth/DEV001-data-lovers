@@ -23,34 +23,6 @@ function init() {
     aboutUsSection.style.display = "none";
 }
 
-// Get the modal
-//const modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-//const btn = document.getElementByClassName("section__gContainer__buttonDiv");
-
-// Get the <span> element that closes the modal
-//const span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-//document.addEventListener("click", btn); 
-
-
-
-
-// When the user clicks on <span> (x), close the modal
-//span.onclick = function() {
-// modal.style.display = "none";
-//}
-
-// When the user clicks anywhere outside of the modal, close it
-//window.onclick = function(event) {
-// if (event.target == modal) {
-// modal.style.display = "none";
-// }
-//}
-
-
 //console.log(data["films"][0]["producer"]);
 
 const iconHamburger = document.getElementById("hamburgerIcon");
@@ -67,24 +39,9 @@ function showMenuLeftResponsive() {
         x.className = "menuLeft";
     }
 }
-/*
 
 //console.log(data["films"][k]["producer"]);
-const producer = document.querySelector(".producers"); //aquí accedo al div con el class = "productores"
-const showProducer = document.createDocumentFragment();
-
-filterDataByProperty(gFilms,"producer").forEach(function (value) {
-  const item = document.createElement("DIV"); //Esto crea un elemento de HTML (es en mayúscula porque es sensible)
-  item.innerHTML = value; //esto lo va guardando en un div
-  showProducer.appendChild(item); //esto crea el div
-});
- 
-producer.appendChild(showProducer); //y aquí se muestra
-*/
-
 //console.log(filterDataByValue(gFilms, "producer", "Hayao Miyazaki"));
-
-
 //console.log(filterDataByValue(gFilms, "director", "Isao Takahata"));
 
 
@@ -152,25 +109,25 @@ document
 
         const selectedValue = document.getElementById("select__movies").value;
 
-              switch (selectedValue) {
-                case "Ascending":
-                       
-                    showMovies(sortDataAZ(movies, "title"));
-                  break;  // then take break
-                case "Descending":
-                     
-                    showMovies(sortDataZA(movies, "title"));
-                  break; // then take break
-            }
+        switch (selectedValue) {
+            case "A to Z":
+
+                showMovies(sortDataAZ(movies, "title"));
+                break;  // then take break
+            case "Z to A":
+
+                showMovies(sortDataZA(movies, "title"));
+                break; // then take break
+        }
 
         welcome.style.display = "none";
         directorsSection.style.display = "none";
         moviesSection.style.display = "block";
         producersSection.style.display = "none";
-           
-     
+
+
     });
-    
+
 function ifContainsChildren(parent) {
     while (parent.hasChildNodes()) {
         parent.removeChild(parent.firstChild);
@@ -289,9 +246,9 @@ const rankingButtonFunction = (role) => {
 const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
 
 
-    roleFilmsSortByScore.forEach((roleFilmsSortByScore) => { console.log("roleFilmsSortByScore: " + roleFilmsSortByScore["title"] + ": " + roleFilmsSortByScore["rt_score"]) });
-    console.log("Promedio: " + scoreAverage);
-    console.log("Número de películas: " + roleFilmsSortByScore.length);
+    // roleFilmsSortByScore.forEach((roleFilmsSortByScore) => { console.log("roleFilmsSortByScore: " + roleFilmsSortByScore["title"] + ": " + roleFilmsSortByScore["rt_score"]) });
+    //console.log("Promedio: " + scoreAverage);
+    //console.log("Número de películas: " + roleFilmsSortByScore.length);
 
     const content = document.querySelector(".modal__content-" + role)
     ifContainsChildren(content);
@@ -309,7 +266,7 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
     modalCardAverage.appendChild(averageDescription);
     fragment.appendChild(modalCardAverage);
 
-    roleFilmsSortByScore.forEach((film,index) => {
+    roleFilmsSortByScore.forEach((film, index) => {
 
         const title = document.createElement("p");
         title.innerText = film.title;
@@ -319,7 +276,7 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
         modalCard.className = "infoModal";
         const rating = document.createElement("div");
         rating.className = "rating";
-        rating.innerText = index+1;
+        rating.innerText = index + 1;
         modalCard.appendChild(rating);
         modalCard.appendChild(title);
         modalCard.appendChild(poster);
@@ -346,14 +303,14 @@ const showInModalCard = (roleFilmsSortByScore, scoreAverage, role) => {
 }
 document
     .getElementById("aboutUsMenu")
-    .addEventListener("click", function() {
+    .addEventListener("click", function () {
 
 
-    aboutUsSection.style.display = "flex";
-    welcome.style.display = "none";
-    directorsSection.style.display = "none";
-    moviesSection.style.display = "none";
-    producersSection.style.display = "none";
-    
-    
-});
+        aboutUsSection.style.display = "flex";
+        welcome.style.display = "none";
+        directorsSection.style.display = "none";
+        moviesSection.style.display = "none";
+        producersSection.style.display = "none";
+
+
+    });
